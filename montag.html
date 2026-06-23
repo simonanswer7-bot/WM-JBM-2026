@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Schüler-WM 2026 – Montag Handy-sicher</title>
+  <style>
+:root{--blue:#063b88;--blue2:#0b63d1;--green:#0d8f3d;--green2:#07642b;--gold:#f4b51d;--gold2:#ffe18a;--ink:#0c1f3f;--muted:#63728a;--bg:#f4f7fb;--line:#d9e3f1;--red:#c93c35}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(180deg,#062f70 0,#0b63d1 250px,var(--bg) 560px)}
+button,input,select,a{font:inherit}
+.app{max-width:1220px;margin:0 auto;padding:10px}
+.hero{color:#fff;border-radius:22px;padding:18px;background:linear-gradient(135deg,#061c47,#0b63d1 58%,#0d8f3d);box-shadow:0 12px 28px rgba(7,30,72,.18)}
+.flags{font-size:21px;letter-spacing:6px;white-space:nowrap;overflow:hidden;text-align:center;margin-bottom:10px}
+.hero-main{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.trophy{font-size:58px}
+h1{margin:0;text-transform:uppercase;line-height:.98;font-size:clamp(30px,6vw,66px)}
+h1 span{display:block;color:var(--gold2)}
+.subtitle{margin:7px 0 0;font-weight:800;font-size:clamp(16px,2.1vw,24px)}
+.badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#13244c;border-radius:999px;padding:10px 14px;font-weight:900;white-space:nowrap}
+.toolbar,.quicknav{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.btn,.quicknav a{min-height:48px;border:0;border-radius:999px;padding:12px 15px;background:#fff;color:var(--blue);font-weight:800;box-shadow:0 6px 15px rgba(0,0,0,.14);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#14254b}
+.btn.red{background:#fff1ef;color:var(--red)}
+.status{margin-left:auto;color:#eaf4ff;font-weight:800}
+.section-title{margin:18px 0 10px;padding:14px 15px;border-radius:18px;color:#fff;background:linear-gradient(90deg,var(--blue),var(--blue2),var(--green));display:flex;justify-content:space-between;gap:10px;align-items:flex-end;box-shadow:0 12px 28px rgba(7,30,72,.12)}
+.section-title h2{margin:0;text-transform:uppercase;font-size:clamp(22px,3vw,32px)}
+.section-title p{margin:0;color:#fff5c9;font-weight:800}
+.card{background:#fff;border:1px solid rgba(13,45,97,.10);border-radius:18px;box-shadow:0 12px 28px rgba(7,30,72,.10);padding:14px;margin-bottom:14px}
+.notice{font-size:14px;color:var(--muted);font-weight:700;line-height:1.45}
+.nation-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.nation-card{border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}
+.class-name{font-size:22px;font-weight:900;color:var(--blue);margin-bottom:8px}
+.nation-card select,.nation-card input,.manual input{width:100%;min-height:46px;border:2px solid #d8e2ef;border-radius:12px;padding:10px;background:#fff;font-size:16px;font-weight:800;outline:none}
+.custom{display:none;margin-top:8px}.custom.show{display:block}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.group{border:2px solid var(--green);border-radius:17px;overflow:hidden;background:#fff}.group.blue{border-color:var(--blue)}
+.group-head{display:flex;justify-content:space-between;background:linear-gradient(90deg,var(--green2),var(--green));color:#fff;padding:12px 14px;font-size:20px;font-weight:900;text-transform:uppercase}
+.group.blue .group-head{background:linear-gradient(90deg,var(--blue),var(--blue2))}
+.group-body{padding:8px 13px 13px}
+.group-row{display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:center;border-top:1px dashed #ccd9ea;padding:10px 0}
+.group-row:first-child{border-top:0}
+.num{font-size:21px;font-weight:900;color:var(--gold)}
+.team-label{font-size:19px;font-weight:900}.team-label small{color:var(--green);font-weight:900}
+.hint{margin-top:11px;background:#eef6ff;border:1px solid #cbdfff;border-radius:14px;padding:11px 13px;color:#153d7a;font-weight:800}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th{background:linear-gradient(180deg,var(--blue2),var(--blue));color:#fff;padding:10px 8px;text-transform:uppercase;font-size:13px;letter-spacing:.03em;white-space:nowrap;text-align:center}
+th.green{background:linear-gradient(180deg,var(--green),var(--green2))}
+td{border-top:1px solid var(--line);padding:9px 8px;text-align:center;vertical-align:middle;font-weight:700}
+td.left{text-align:left}
+.time{font-weight:900;color:var(--blue);white-space:nowrap}
+tr.pause td{background:#eef5ff;color:#173e75}
+tr.gold td{background:linear-gradient(90deg,#fff2b8,#ffda67);font-weight:900}
+tr.green-row td{background:linear-gradient(90deg,#e9ffec,#c8f4ca);font-weight:900}
+.match{display:flex;justify-content:center;align-items:center;gap:7px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:999px;background:#eef5ff;border:1px solid #c9dbff;color:#0a2a58;font-weight:900;white-space:nowrap}
+.chip small{color:var(--green);font-weight:900}.chip.open{background:#fff7db;border-color:#f0d277;color:#6a4a00}.vs{font-size:12px;color:#78859a;font-weight:900}
+.score{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:6px}
+.score input{width:54px;min-height:46px;padding:7px 5px;border-radius:10px;border:2px solid #d4ddea;text-align:center;font-size:18px;font-weight:900;background:#fff}
+.score input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(11,99,209,.12)}
+.tie{margin-top:6px;width:100%;max-width:260px;min-height:44px;border:1px solid #d4ddea;border-radius:10px;padding:8px;font-size:16px;font-weight:800;background:#fff}
+.live-tables{display:grid;grid-template-columns:1fr 1fr;gap:12px}.rank-card{border:2px solid var(--blue);border-radius:17px;overflow:hidden;background:#fff}.rank-card.green{border-color:var(--green)}
+.rank-head{display:flex;justify-content:space-between;background:var(--blue);color:#fff;padding:12px 14px;font-size:19px;font-weight:900;text-transform:uppercase}.rank-card.green .rank-head{background:var(--green)}
+.rank-table{width:100%;min-width:0}.rank-table th,.rank-table td{font-size:14px;padding:8px 6px}.rank-table th:nth-child(2),.rank-table td:nth-child(2){text-align:left}.rank-no{font-size:20px;font-weight:900;color:var(--gold)}.metric{font-variant-numeric:tabular-nums;font-weight:900}
+.winners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.winner{border:1px solid #dbe5f3;border-radius:17px;padding:14px;background:linear-gradient(180deg,#fff,#f7fbff)}.winner h3{margin:0 0 8px;color:var(--blue)}.winner-name{font-size:22px;font-weight:900;color:var(--green)}
+.manual{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:900px){.app{padding:8px}.hero{border-radius:18px}.hero-main{grid-template-columns:1fr;text-align:center}.trophy{display:none}.badge{justify-self:center}.status{width:100%;margin-left:0}.nation-grid,.winners{grid-template-columns:1fr 1fr}.groups,.live-tables,.manual{grid-template-columns:1fr}.quicknav a,.btn{flex:1 1 150px}}
+@media(max-width:560px){.nation-grid,.winners{grid-template-columns:1fr}.section-title{flex-direction:column;align-items:flex-start}table{min-width:720px}.rank-table{min-width:0}.rank-table th,.rank-table td{font-size:12px;padding:7px 4px}.flags{font-size:18px}.toolbar{gap:7px}.score input{width:58px}}
+@media print{body{background:#fff}.toolbar,.quicknav{display:none}.hero,.card,.section-title{box-shadow:none}section{page-break-before:always}section:first-of-type{page-break-before:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero">
+  <div class="flags">🇧🇷 🇩🇪 🇦🇷 🇫🇷 🇯🇵 🇮🇹 🇪🇸 🇵🇹 🇺🇸 🇭🇷 🇳🇱 🇬🇧 🇲🇦 🇧🇪</div>
+  <div class="hero-main">
+    <div class="trophy">🏆</div>
+    <div><h1>Schüler-WM <span>Montag</span></h1><p class="subtitle">Montag, 06.07.2026 · Klassen 7 &amp; 8 | Kleinfeldturnier | 7 gegen 7</p></div>
+    <div class="badge">⚽ WM-Edition</div>
+  </div>
+  <div class="toolbar">
+    <button class="btn primary" onclick="calculate()">🔄 Tabelle berechnen</button>
+    <button class="btn" onclick="window.print()">🖨️ Drucken / PDF</button>
+    <button class="btn red" onclick="clearScores()">Ergebnisse löschen</button>
+    <button class="btn red" onclick="clearAll()">Alles löschen</button>
+    <span class="status">Handy-sichere Version</span>
+  </div>
+  <nav class="quicknav"><a href="#nationen">Nationen</a><a href="#spielplan">Spielplan</a><a href="#livetabellen">Live-Tabellen</a><a href="#finalrunde">Finalrunde</a></nav>
+</header>
+
+<section id="nationen">
+  <div class="section-title"><h2>🌍 WM-Nationen</h2><p>erscheinen in Klammern hinter der Klasse</p></div>
+  <div class="card"><div class="nation-grid"><div class="nation-card">
+          <div class="class-name">7aM</div>
+          <select data-nation="7aM" onchange="setNation('7aM', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="7aM" placeholder="Eigene Nation eintragen" oninput="setCustom('7aM', this.value)" onchange="setCustom('7aM', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">7c</div>
+          <select data-nation="7c" onchange="setNation('7c', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="7c" placeholder="Eigene Nation eintragen" oninput="setCustom('7c', this.value)" onchange="setCustom('7c', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">8aM</div>
+          <select data-nation="8aM" onchange="setNation('8aM', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="8aM" placeholder="Eigene Nation eintragen" oninput="setCustom('8aM', this.value)" onchange="setCustom('8aM', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">8d</div>
+          <select data-nation="8d" onchange="setNation('8d', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="8d" placeholder="Eigene Nation eintragen" oninput="setCustom('8d', this.value)" onchange="setCustom('8d', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">7dG</div>
+          <select data-nation="7dG" onchange="setNation('7dG', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="7dG" placeholder="Eigene Nation eintragen" oninput="setCustom('7dG', this.value)" onchange="setCustom('7dG', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">8bM</div>
+          <select data-nation="8bM" onchange="setNation('8bM', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="8bM" placeholder="Eigene Nation eintragen" oninput="setCustom('8bM', this.value)" onchange="setCustom('8bM', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">8c</div>
+          <select data-nation="8c" onchange="setNation('8c', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="8c" placeholder="Eigene Nation eintragen" oninput="setCustom('8c', this.value)" onchange="setCustom('8c', this.value)">
+        </div><div class="nation-card">
+          <div class="class-name">8eG</div>
+          <select data-nation="8eG" onchange="setNation('8eG', this.value)"><option value="">Nation auswählen</option><option value="Argentinien">Argentinien</option><option value="Brasilien">Brasilien</option><option value="Deutschland">Deutschland</option><option value="Frankreich">Frankreich</option><option value="England">England</option><option value="Spanien">Spanien</option><option value="Portugal">Portugal</option><option value="Italien">Italien</option><option value="Niederlande">Niederlande</option><option value="Argentinien">Argentinien</option><option value="Japan">Japan</option><option value="Kroatien">Kroatien</option><option value="Marokko">Marokko</option><option value="Belgien">Belgien</option><option value="Schweiz">Schweiz</option><option value="USA">USA</option><option value="Mexiko">Mexiko</option><option value="Ghana">Ghana</option><option value="Senegal">Senegal</option><option value="Südkorea">Südkorea</option><option value="Uruguay">Uruguay</option><option value="Dänemark">Dänemark</option><option value="Polen">Polen</option><option value="Türkei">Türkei</option><option value="Österreich">Österreich</option><option value="Andere Nation...">Andere Nation...</option></select>
+          <input class="custom" data-custom="8eG" placeholder="Eigene Nation eintragen" oninput="setCustom('8eG', this.value)" onchange="setCustom('8eG', this.value)">
+        </div></div></div>
+</section>
+
+<section id="spielplan">
+  <div class="section-title"><h2>🧩 Gruppenkonstellation</h2><p>mit WM-Nationen</p></div>
+  <div class="card"><div class="groups"><div class="group ">
+          <div class="group-head"><span>🌍 Gruppe A</span><span>Spielfeld 1</span></div>
+          <div class="group-body"><div class="group-row"><div class="num">1.</div><div class="team-label" data-team-label="7aM">7aM</div></div><div class="group-row"><div class="num">2.</div><div class="team-label" data-team-label="7c">7c</div></div><div class="group-row"><div class="num">3.</div><div class="team-label" data-team-label="8aM">8aM</div></div><div class="group-row"><div class="num">4.</div><div class="team-label" data-team-label="8d">8d</div></div></div>
+        </div><div class="group blue">
+          <div class="group-head"><span>🌍 Gruppe B</span><span>Spielfeld 2</span></div>
+          <div class="group-body"><div class="group-row"><div class="num">1.</div><div class="team-label" data-team-label="7dG">7dG</div></div><div class="group-row"><div class="num">2.</div><div class="team-label" data-team-label="8bM">8bM</div></div><div class="group-row"><div class="num">3.</div><div class="team-label" data-team-label="8c">8c</div></div><div class="group-row"><div class="num">4.</div><div class="team-label" data-team-label="8eG">8eG</div></div></div>
+        </div></div><div class="hint">ℹ️ Spielmodus: 7 gegen 7. Halbfinale: 1. und 2. jeder Gruppe.</div></div>
+  <div class="section-title"><h2>⏱️ Spielplan & Ergebnisse</h2><p>Ergebnisse eintragen – die Tabelle berechnet sich sofort</p></div>
+  <div class="card"><div class="table-wrap"><table>
+    <thead><tr><th>Uhrzeit</th><th class="green">Runde / Event</th><th>Spielfeld 1</th><th class="green">Spielfeld 2</th></tr></thead>
+    <tbody><tr class="pause"><td class="time">08:00–08:30</td><td>Vorbereitung</td><td>Ankommen, Umziehen, Warm-up &amp; Begrüßung</td><td>Ankommen, Umziehen, Warm-up &amp; Begrüßung</td></tr><tr class=""><td class="time">08:30–08:45</td><td>Vorrunde R1</td><td><div class="match">
+      <span data-home="g1"><span class="chip open">7aM</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g1"><span class="chip open">8d</span></span>
+    </div><div class="score">
+      <input id="h_g1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g1"></div></td><td><div class="match">
+      <span data-home="g2"><span class="chip open">7dG</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g2"><span class="chip open">8eG</span></span>
+    </div><div class="score">
+      <input id="h_g2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g2"></div></td></tr><tr class=""><td class="time">08:45–09:00</td><td>Vorrunde R2</td><td><div class="match">
+      <span data-home="g3"><span class="chip open">7c</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g3"><span class="chip open">8aM</span></span>
+    </div><div class="score">
+      <input id="h_g3" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g3" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g3"></div></td><td><div class="match">
+      <span data-home="g4"><span class="chip open">8bM</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g4"><span class="chip open">8c</span></span>
+    </div><div class="score">
+      <input id="h_g4" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g4" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g4"></div></td></tr><tr class=""><td class="time">09:00–09:15</td><td>Vorrunde R3</td><td><div class="match">
+      <span data-home="g5"><span class="chip open">7aM</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g5"><span class="chip open">8aM</span></span>
+    </div><div class="score">
+      <input id="h_g5" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g5" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g5"></div></td><td><div class="match">
+      <span data-home="g6"><span class="chip open">7dG</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g6"><span class="chip open">8c</span></span>
+    </div><div class="score">
+      <input id="h_g6" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g6" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g6"></div></td></tr><tr class=""><td class="time">09:15–09:30</td><td>Vorrunde R4</td><td><div class="match">
+      <span data-home="g7"><span class="chip open">8d</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g7"><span class="chip open">7c</span></span>
+    </div><div class="score">
+      <input id="h_g7" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g7" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g7"></div></td><td><div class="match">
+      <span data-home="g8"><span class="chip open">8eG</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g8"><span class="chip open">8bM</span></span>
+    </div><div class="score">
+      <input id="h_g8" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g8" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g8"></div></td></tr><tr class=""><td class="time">09:30–09:45</td><td>Vorrunde R5</td><td><div class="match">
+      <span data-home="g9"><span class="chip open">7aM</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g9"><span class="chip open">7c</span></span>
+    </div><div class="score">
+      <input id="h_g9" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g9" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g9"></div></td><td><div class="match">
+      <span data-home="g10"><span class="chip open">7dG</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g10"><span class="chip open">8bM</span></span>
+    </div><div class="score">
+      <input id="h_g10" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g10" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g10"></div></td></tr><tr class=""><td class="time">09:45–10:00</td><td>Vorrunde R6</td><td><div class="match">
+      <span data-home="g11"><span class="chip open">8aM</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g11"><span class="chip open">8d</span></span>
+    </div><div class="score">
+      <input id="h_g11" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g11" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g11"></div></td><td><div class="match">
+      <span data-home="g12"><span class="chip open">8c</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="g12"><span class="chip open">8eG</span></span>
+    </div><div class="score">
+      <input id="h_g12" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_g12" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_g12"></div></td></tr><tr class="pause"><td class="time">10:00–10:20</td><td>Pause</td><td>Auswertung &amp; Erholung</td><td>Auswertung &amp; Erholung</td></tr><tr class=""><td class="time">10:20–10:35</td><td>Halbfinale</td><td><div class="match">
+      <span data-home="sf1"><span class="chip open">1. Gruppe A</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="sf1"><span class="chip open">2. Gruppe B</span></span>
+    </div><div class="score">
+      <input id="h_sf1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_sf1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_sf1"></div></td><td><div class="match">
+      <span data-home="sf2"><span class="chip open">1. Gruppe B</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="sf2"><span class="chip open">2. Gruppe A</span></span>
+    </div><div class="score">
+      <input id="h_sf2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_sf2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_sf2"></div></td></tr><tr class="pause"><td class="time">10:35–10:50</td><td>Pause</td><td>Finalteams bereitmachen</td><td>Regeneration</td></tr><tr class=""><td class="time">10:50–11:05</td><td>Finalspiele</td><td><div class="match">
+      <span data-home="final"><span class="chip open">Sieger Halbfinale 1</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="final"><span class="chip open">Sieger Halbfinale 2</span></span>
+    </div><div class="score">
+      <input id="h_final" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_final" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_final"></div></td><td><div class="match">
+      <span data-home="third"><span class="chip open">Verlierer Halbfinale 1</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="third"><span class="chip open">Verlierer Halbfinale 2</span></span>
+    </div><div class="score">
+      <input id="h_third" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_third" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_third"></div></td></tr><tr class="pause"><td class="time">11:10–11:25</td><td>Siegerehrung</td><td>Verkündigung der Plätze &amp; Ehrung</td><td>Verkündigung der Plätze &amp; Ehrung</td></tr></tbody>
+  </table></div></div>
+</section>
+
+<section id="livetabellen">
+  <div class="section-title"><h2>📊 Live-Tabellen</h2><p>direkt aus den Ergebnisfeldern</p></div>
+  <div class="card"><div class="live-tables"><div class="rank-card green">
+          <div class="rank-head"><span>Live-Tabelle Gruppe A</span><span>🏆</span></div>
+          <div class="table-wrap"><table class="rank-table">
+            <thead><tr><th>Platz</th><th>Team</th><th>Sp.</th><th>Tore</th><th>Diff.</th><th>Pkt.</th></tr></thead>
+            <tbody id="live_A"><tr><td class="rank-no">1</td><td class="left"><span class="chip">7aM</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">2</td><td class="left"><span class="chip">7c</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">3</td><td class="left"><span class="chip">8aM</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">4</td><td class="left"><span class="chip">8d</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr></tbody>
+          </table></div>
+        </div><div class="rank-card ">
+          <div class="rank-head"><span>Live-Tabelle Gruppe B</span><span>🏆</span></div>
+          <div class="table-wrap"><table class="rank-table">
+            <thead><tr><th>Platz</th><th>Team</th><th>Sp.</th><th>Tore</th><th>Diff.</th><th>Pkt.</th></tr></thead>
+            <tbody id="live_B"><tr><td class="rank-no">1</td><td class="left"><span class="chip">7dG</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">2</td><td class="left"><span class="chip">8bM</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">3</td><td class="left"><span class="chip">8c</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr><tr><td class="rank-no">4</td><td class="left"><span class="chip">8eG</span></td><td class="metric">0</td><td class="metric">0:0</td><td class="metric">0</td><td class="metric">0</td></tr></tbody>
+          </table></div>
+        </div></div>
+  <p class="notice">Ein Spiel zählt, sobald beide Tore eingetragen sind, z. B. 2 : 1 oder 0 : 0. Auf manchen Handys hilft zusätzlich der Button „Tabelle berechnen“.</p></div>
+</section>
+
+<section id="finalrunde">
+  <div class="section-title"><h2>🏆 Finalrunde</h2><p>K.-o.-Spiele automatisch gefüllt</p></div>
+  <div class="card"><div class="winners"><div class="winner"><h3>Finale Klassen 7/8</h3><div class="winner-name" id="winner_final"><span class="chip open">offen</span></div></div><div class="winner"><h3>Spiel um Platz 3</h3><div class="winner-name" id="winner_third"><span class="chip open">offen</span></div></div></div></div>
+  <div class="card"><div class="table-wrap"><table><thead><tr><th>Spiel</th><th>Begegnung</th><th>Aktueller Sieger</th></tr></thead><tbody><tr><td>Halbfinale 1</td><td><div class="match">
+      <span data-home="sf1"><span class="chip open">1. Gruppe A</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="sf1"><span class="chip open">2. Gruppe B</span></span>
+    </div><div class="score">
+      <input id="h_sf1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_sf1" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_sf1"></div></td><td id="finalwinner_sf1"><span class="chip open">offen</span></td></tr><tr><td>Halbfinale 2</td><td><div class="match">
+      <span data-home="sf2"><span class="chip open">1. Gruppe B</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="sf2"><span class="chip open">2. Gruppe A</span></span>
+    </div><div class="score">
+      <input id="h_sf2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_sf2" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_sf2"></div></td><td id="finalwinner_sf2"><span class="chip open">offen</span></td></tr><tr><td>Finale Klassen 7/8</td><td><div class="match">
+      <span data-home="final"><span class="chip open">Sieger Halbfinale 1</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="final"><span class="chip open">Sieger Halbfinale 2</span></span>
+    </div><div class="score">
+      <input id="h_final" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_final" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_final"></div></td><td id="finalwinner_final"><span class="chip open">offen</span></td></tr><tr><td>Spiel um Platz 3</td><td><div class="match">
+      <span data-home="third"><span class="chip open">Verlierer Halbfinale 1</span></span>
+      <span class="vs">vs.</span>
+      <span data-away="third"><span class="chip open">Verlierer Halbfinale 2</span></span>
+    </div><div class="score">
+      <input id="h_third" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+      <b>:</b>
+      <input id="a_third" type="tel" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
+    </div><div id="tie_third"></div></td><td id="finalwinner_third"><span class="chip open">offen</span></td></tr></tbody></table></div></div>
+</section>
+</div>
+<script>
+var CONFIG = {"page_title": "Schüler-WM 2026 – Montag Handy-sicher", "headline": "Schüler-WM ", "headline2": "Montag", "day": "Montag, 06.07.2026", "subtitle": "Klassen 7 & 8 | Kleinfeldturnier | 7 gegen 7", "end": "11:25 Uhr", "storageKey": "schueler_wm_montag_handy_sicher_v1", "nations": ["", "Argentinien", "Brasilien", "Deutschland", "Frankreich", "England", "Spanien", "Portugal", "Italien", "Niederlande", "Argentinien", "Japan", "Kroatien", "Marokko", "Belgien", "Schweiz", "USA", "Mexiko", "Ghana", "Senegal", "Südkorea", "Uruguay", "Dänemark", "Polen", "Türkei", "Österreich", "Andere Nation..."], "groups": {"A": ["7aM", "7c", "8aM", "8d"], "B": ["7dG", "8bM", "8c", "8eG"]}, "note": "Spielmodus: 7 gegen 7. Halbfinale: 1. und 2. jeder Gruppe.", "manualWinner": false, "matches": {"g1": {"stage": "group", "group": "A", "home": "7aM", "away": "8d"}, "g2": {"stage": "group", "group": "B", "home": "7dG", "away": "8eG"}, "g3": {"stage": "group", "group": "A", "home": "7c", "away": "8aM"}, "g4": {"stage": "group", "group": "B", "home": "8bM", "away": "8c"}, "g5": {"stage": "group", "group": "A", "home": "7aM", "away": "8aM"}, "g6": {"stage": "group", "group": "B", "home": "7dG", "away": "8c"}, "g7": {"stage": "group", "group": "A", "home": "8d", "away": "7c"}, "g8": {"stage": "group", "group": "B", "home": "8eG", "away": "8bM"}, "g9": {"stage": "group", "group": "A", "home": "7aM", "away": "7c"}, "g10": {"stage": "group", "group": "B", "home": "7dG", "away": "8bM"}, "g11": {"stage": "group", "group": "A", "home": "8aM", "away": "8d"}, "g12": {"stage": "group", "group": "B", "home": "8c", "away": "8eG"}, "sf1": {"stage": "ko", "home": {"rank": ["A", 1]}, "away": {"rank": ["B", 2]}, "label": "Halbfinale 1"}, "sf2": {"stage": "ko", "home": {"rank": ["B", 1]}, "away": {"rank": ["A", 2]}, "label": "Halbfinale 2"}, "final": {"stage": "ko", "home": {"winner": "sf1"}, "away": {"winner": "sf2"}, "label": "Finale Klassen 7/8"}, "third": {"stage": "ko", "home": {"loser": "sf1"}, "away": {"loser": "sf2"}, "label": "Spiel um Platz 3"}}, "rows": [{"time": "08:00–08:30", "round": "Vorbereitung", "type": "event", "p1": "Ankommen, Umziehen, Warm-up & Begrüßung", "p2": "Ankommen, Umziehen, Warm-up & Begrüßung"}, {"time": "08:30–08:45", "round": "Vorrunde R1", "p1": "g1", "p2": "g2"}, {"time": "08:45–09:00", "round": "Vorrunde R2", "p1": "g3", "p2": "g4"}, {"time": "09:00–09:15", "round": "Vorrunde R3", "p1": "g5", "p2": "g6"}, {"time": "09:15–09:30", "round": "Vorrunde R4", "p1": "g7", "p2": "g8"}, {"time": "09:30–09:45", "round": "Vorrunde R5", "p1": "g9", "p2": "g10"}, {"time": "09:45–10:00", "round": "Vorrunde R6", "p1": "g11", "p2": "g12"}, {"time": "10:00–10:20", "round": "Pause", "type": "event", "p1": "Auswertung & Erholung", "p2": "Auswertung & Erholung"}, {"time": "10:20–10:35", "round": "Halbfinale", "p1": "sf1", "p2": "sf2"}, {"time": "10:35–10:50", "round": "Pause", "type": "event", "p1": "Finalteams bereitmachen", "p2": "Regeneration"}, {"time": "10:50–11:05", "round": "Finalspiele", "p1": "final", "p2": "third"}, {"time": "11:10–11:25", "round": "Siegerehrung", "type": "event", "p1": "Verkündigung der Plätze & Ehrung", "p2": "Verkündigung der Plätze & Ehrung"}], "finalIds": ["sf1", "sf2", "final", "third"], "winnerIds": [["Finale Klassen 7/8", "final"], ["Spiel um Platz 3", "third"]]};
+
+var STATE = { nations:{}, custom:{}, scores:{}, ties:{}, manual:{} };
+
+function byId(id){ return document.getElementById(id); }
+function safe(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]; }); }
+
+function allTeams(){
+  var list = [];
+  Object.keys(CONFIG.groups).forEach(function(g){
+    CONFIG.groups[g].forEach(function(t){ if(list.indexOf(t) < 0) list.push(t); });
+  });
+  return list;
+}
+
+function load(){
+  try{
+    var raw = localStorage.getItem(CONFIG.storageKey);
+    if(raw) STATE = JSON.parse(raw);
+  }catch(e){}
+  STATE.nations = STATE.nations || {};
+  STATE.custom = STATE.custom || {};
+  STATE.scores = STATE.scores || {};
+  STATE.ties = STATE.ties || {};
+  STATE.manual = STATE.manual || {};
+  allTeams().forEach(function(t){
+    if(STATE.nations[t] === undefined) STATE.nations[t] = "";
+    if(STATE.custom[t] === undefined) STATE.custom[t] = "";
+  });
+}
+
+function save(){
+  try{ localStorage.setItem(CONFIG.storageKey, JSON.stringify(STATE)); }catch(e){}
+}
+
+function displayNation(team){
+  var n = STATE.nations[team] || "";
+  if(n === "Andere Nation...") n = STATE.custom[team] || "";
+  return (n || "").trim();
+}
+
+function teamName(team){
+  if(!team) return "offen";
+  if(typeof team === "object" && team.literal) return team.literal;
+  if(typeof team === "object" && team.manual){
+    var c = (STATE.manual.mondayClass || "Sieger Montag").trim();
+    var n = (STATE.manual.mondayNation || "").trim();
+    return n ? c + " (" + n + ")" : c;
+  }
+  var n = displayNation(team);
+  return n ? team + " (" + n + ")" : team;
+}
+
+function chip(team, openText){
+  if(!team) return '<span class="chip open">' + safe(openText || "offen") + '</span>';
+  return '<span class="chip">' + safe(teamName(team)) + '</span>';
+}
+
+function getScore(id){
+  var h = byId("h_" + id);
+  var a = byId("a_" + id);
+  var hv = h ? h.value.trim() : "";
+  var av = a ? a.value.trim() : "";
+  if(!STATE.scores[id]) STATE.scores[id] = {h:"", a:""};
+  STATE.scores[id].h = hv;
+  STATE.scores[id].a = av;
+  if(hv === "" || av === "") return null;
+  var hn = Number(hv);
+  var an = Number(av);
+  if(!isFinite(hn) || !isFinite(an)) return null;
+  return {h:hn, a:an};
+}
+
+function calcGroup(group){
+  var order = CONFIG.groups[group];
+  var table = {};
+  order.forEach(function(t){ table[t] = {team:t, sp:0, gf:0, ga:0, gd:0, pts:0}; });
+
+  Object.keys(CONFIG.matches).forEach(function(id){
+    var m = CONFIG.matches[id];
+    if(m.stage !== "group" || m.group !== group) return;
+    var s = getScore(id);
+    if(!s) return;
+    var home = m.home;
+    var away = m.away;
+    table[home].sp++;
+    table[away].sp++;
+    table[home].gf += s.h;
+    table[home].ga += s.a;
+    table[away].gf += s.a;
+    table[away].ga += s.h;
+    if(s.h > s.a) table[home].pts += 3;
+    else if(s.a > s.h) table[away].pts += 3;
+    else { table[home].pts += 1; table[away].pts += 1; }
+  });
+
+  var rows = Object.keys(table).map(function(k){
+    table[k].gd = table[k].gf - table[k].ga;
+    return table[k];
+  });
+
+  rows.sort(function(x,y){
+    return y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || x.ga - y.ga || order.indexOf(x.team) - order.indexOf(y.team);
+  });
+  return rows;
+}
+
+function resolve(ref){
+  if(!ref) return null;
+  if(typeof ref === "string") return ref;
+  if(ref.literal) return ref;
+  if(ref.manual) return ref;
+  if(ref.rank){
+    var t = calcGroup(ref.rank[0]);
+    return t[ref.rank[1]-1] ? t[ref.rank[1]-1].team : null;
+  }
+  if(ref.winner) return resultOf(ref.winner, "winner");
+  if(ref.loser) return resultOf(ref.loser, "loser");
+  return null;
+}
+
+function resultOf(id, want){
+  var m = CONFIG.matches[id];
+  if(!m) return null;
+  var home = resolve(m.home);
+  var away = resolve(m.away);
+  if(!home || !away) return null;
+  var s = getScore(id);
+  if(!s) return null;
+  if(s.h > s.a) return want === "winner" ? home : away;
+  if(s.a > s.h) return want === "winner" ? away : home;
+  var tie = STATE.ties[id] || "";
+  if(!tie) return null;
+  return want === "winner" ? (tie === "home" ? home : away) : (tie === "home" ? away : home);
+}
+
+function placeholder(ref){
+  if(!ref) return "offen";
+  if(typeof ref === "string") return ref;
+  if(ref.literal) return ref.literal;
+  if(ref.manual) return "Sieger Montag";
+  if(ref.rank) return ref.rank[1] + ". Gruppe " + ref.rank[0];
+  if(ref.winner) return "Sieger " + (CONFIG.matches[ref.winner] ? CONFIG.matches[ref.winner].label : ref.winner);
+  if(ref.loser) return "Verlierer " + (CONFIG.matches[ref.loser] ? CONFIG.matches[ref.loser].label : ref.loser);
+  return "offen";
+}
+
+function renderGroups(){
+  document.querySelectorAll("[data-team-label]").forEach(function(el){
+    el.innerHTML = safe(teamName(el.dataset.teamLabel));
+  });
+}
+
+function renderLiveTables(){
+  Object.keys(CONFIG.groups).forEach(function(group){
+    var body = byId("live_" + group);
+    if(!body) return;
+    body.innerHTML = calcGroup(group).map(function(r, i){
+      return '<tr>'
+        + '<td class="rank-no">' + (i+1) + '</td>'
+        + '<td class="left">' + chip(r.team) + '</td>'
+        + '<td class="metric">' + r.sp + '</td>'
+        + '<td class="metric">' + r.gf + ':' + r.ga + '</td>'
+        + '<td class="metric">' + (r.gd > 0 ? '+' : '') + r.gd + '</td>'
+        + '<td class="metric">' + r.pts + '</td>'
+        + '</tr>';
+    }).join("");
+  });
+}
+
+function renderMatches(){
+  Object.keys(CONFIG.matches).forEach(function(id){
+    var m = CONFIG.matches[id];
+    var home = resolve(m.home);
+    var away = resolve(m.away);
+    document.querySelectorAll('[data-home="' + id + '"]').forEach(function(el){ el.innerHTML = chip(home, placeholder(m.home)); });
+    document.querySelectorAll('[data-away="' + id + '"]').forEach(function(el){ el.innerHTML = chip(away, placeholder(m.away)); });
+
+    var tieBox = byId("tie_" + id);
+    if(tieBox){
+      var s = getScore(id);
+      if(m.stage === "ko" && home && away && s && s.h === s.a){
+        tieBox.innerHTML = "<select class=\"tie\" onchange=\"setTie('" + id + "', this.value)\">"
+          + '<option value="">Sieger bei Remis wählen</option>'
+          + '<option value="home"' + (STATE.ties[id] === "home" ? " selected" : "") + '>' + safe(teamName(home)) + '</option>'
+          + '<option value="away"' + (STATE.ties[id] === "away" ? " selected" : "") + '>' + safe(teamName(away)) + '</option>'
+          + '</select>';
+      } else {
+        tieBox.innerHTML = "";
+      }
+    }
+  });
+}
+
+function renderWinners(){
+  CONFIG.winnerIds.forEach(function(pair){
+    var el = byId("winner_" + pair[1]);
+    if(el) el.innerHTML = chip(resultOf(pair[1], "winner"), "offen");
+  });
+  CONFIG.finalIds.forEach(function(id){
+    var el = byId("finalwinner_" + id);
+    if(el) el.innerHTML = chip(resultOf(id, "winner"), "offen");
+  });
+}
+
+function renderStats(){
+  var count = 0;
+  Object.keys(CONFIG.matches).forEach(function(id){ if(getScore(id)) count++; });
+  var el = byId("playedCount");
+  if(el) el.textContent = count;
+}
+
+function calculate(){
+  renderGroups();
+  renderLiveTables();
+  renderMatches();
+  renderWinners();
+  renderStats();
+  save();
+}
+
+function setTie(id, value){
+  if(value) STATE.ties[id] = value;
+  else delete STATE.ties[id];
+  calculate();
+}
+
+function setNation(team, value){
+  STATE.nations[team] = value;
+  var custom = document.querySelector('[data-custom="' + team.replace(/"/g, '\\"') + '"]');
+  if(value === "Andere Nation..."){
+    if(custom) custom.classList.add("show");
+  } else {
+    STATE.custom[team] = "";
+    if(custom){ custom.value = ""; custom.classList.remove("show"); }
+  }
+  calculate();
+}
+
+function setCustom(team, value){
+  STATE.custom[team] = value;
+  calculate();
+}
+
+function setManual(key, value){
+  STATE.manual[key] = value;
+  calculate();
+}
+
+function restore(){
+  Object.keys(CONFIG.matches).forEach(function(id){
+    var s = STATE.scores[id] || {h:"", a:""};
+    if(byId("h_" + id)) byId("h_" + id).value = s.h;
+    if(byId("a_" + id)) byId("a_" + id).value = s.a;
+  });
+  allTeams().forEach(function(t){
+    var sel = document.querySelector('[data-nation="' + t + '"]');
+    if(sel) sel.value = STATE.nations[t] || "";
+    var custom = document.querySelector('[data-custom="' + t + '"]');
+    if(custom){
+      custom.value = STATE.custom[t] || "";
+      if((STATE.nations[t] || "") === "Andere Nation...") custom.classList.add("show");
+    }
+  });
+  document.querySelectorAll("[data-manual]").forEach(function(input){
+    input.value = STATE.manual[input.dataset.manual] || "";
+  });
+}
+
+function clearScores(){
+  if(confirm("Alle Ergebnisse löschen?")){
+    STATE.scores = {};
+    STATE.ties = {};
+    Object.keys(CONFIG.matches).forEach(function(id){
+      if(byId("h_" + id)) byId("h_" + id).value = "";
+      if(byId("a_" + id)) byId("a_" + id).value = "";
+    });
+    calculate();
+  }
+}
+
+function clearAll(){
+  if(confirm("Alle Nationen und Ergebnisse löschen?")){
+    localStorage.removeItem(CONFIG.storageKey);
+    location.reload();
+  }
+}
+
+window.onload = function(){
+  load();
+  restore();
+  calculate();
+};
+
+</script>
+</body>
+</html>

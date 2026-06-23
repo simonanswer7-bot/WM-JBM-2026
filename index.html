@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Schüler-WM 2026</title>
+  <style>
+    :root{--blue:#073b88;--green:#0d8f3d;--gold:#f4b51d;--bg:#f4f7fb;--ink:#0c1f3f}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(180deg,#062f70 0,#0b63d1 260px,var(--bg) 560px);min-height:100vh}
+    .wrap{max-width:760px;margin:0 auto;padding:18px}
+    .hero{color:white;border-radius:26px;padding:26px 18px;text-align:center;background:linear-gradient(135deg,#061c47,#0b63d1 58%,#0d8f3d);box-shadow:0 14px 34px rgba(7,30,72,.24)}
+    .flags{font-size:22px;letter-spacing:7px;white-space:nowrap;overflow:hidden;margin-bottom:12px}
+    h1{margin:0;text-transform:uppercase;font-size:clamp(36px,9vw,72px);line-height:.95}
+    h1 span{display:block;color:#ffe18a}
+    p{font-weight:800;line-height:1.45}
+    .badge{display:inline-block;margin-top:8px;background:linear-gradient(135deg,#f4b51d,#ffe18a);color:#13244c;border-radius:999px;padding:10px 16px;font-weight:900}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+    a.card{display:block;text-decoration:none;color:var(--ink);background:white;border-radius:22px;padding:20px;box-shadow:0 12px 28px rgba(7,30,72,.14);border:1px solid rgba(13,45,97,.10)}
+    .icon{font-size:42px}
+    h2{margin:8px 0 8px;color:var(--blue);font-size:26px}
+    .green h2{color:var(--green)}
+    .note{margin-top:16px;background:white;border-radius:18px;padding:14px;box-shadow:0 10px 24px rgba(7,30,72,.10);font-size:14px;color:#52627a}
+    @media(max-width:620px){.cards{grid-template-columns:1fr}.wrap{padding:10px}.hero{border-radius:20px}.flags{font-size:18px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="flags">🇧🇷 🇩🇪 🇦🇷 🇫🇷 🇯🇵 🇮🇹 🇪🇸 🇵🇹 🇺🇸 🇭🇷</div>
+      <h1>Schüler-WM <span>2026</span></h1>
+      <p>Spielpläne, Ergebnisse und Live-Tabellen</p>
+      <div class="badge">⚽ WM-Edition · 7 gegen 7</div>
+    </section>
+
+    <section class="cards">
+      <a class="card" href="montag.html">
+        <div class="icon">🏆</div>
+        <h2>Montag</h2>
+        <p>Klassen 7 & 8<br>06.07.2026</p>
+      </a>
+      <a class="card green" href="mittwoch.html">
+        <div class="icon">🌍</div>
+        <h2>Mittwoch</h2>
+        <p>Klassen 5 & 6<br>08.07.2026</p>
+      </a>
+    </section>
+
+    <div class="note">
+      Für WhatsApp am zuverlässigsten: Diese Datei als Webseite hosten und dann den Link verschicken.
+      Die Live-Tabellen funktionieren dann direkt im Handy-Browser.
+    </div>
+  </main>
+</body>
+</html>
